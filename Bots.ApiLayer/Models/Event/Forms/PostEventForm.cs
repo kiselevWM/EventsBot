@@ -29,5 +29,13 @@ namespace Bots.ApiLayer.Models.Event.Forms
 		/// Настройки направленного события
 		/// </summary>
 		public DirectedAccessForm directedAccess { get; set; }
+		/// <summary>
+		/// Пользователь может удалять свои комментарии
+		/// </summary>
+		public EventAbilityToDeleteDiscussion AbilityToDeleteDiscussion { get; set; }
+		/// <summary>
+		/// Древовидные комментарии
+		/// </summary>
+		public EventTreeBranches EventTreeBranches { get; set; }
 	}
 }
