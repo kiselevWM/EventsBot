@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Bots.Common.ExternelModels.Requests.BotCommands;
+using Bots.Common.ExternelModels.Requests.BotCommands.ChatMessageCommand;
 using Bots.Common.ExternelModels.Requests.BotCommands.DiscussCommand;
 using Bots.Common.ExternelModels.Requests.BotCommands.EventCommand;
 using Bots.Common.ExternelModels.Requests.BotCommands.MessageCommand;
@@ -24,6 +25,11 @@ namespace Bots.Common.Models.Command
 		}
 
 		public virtual Task<BaseCommandBotResponse<IEventCommandResponse>> ExecAsync(BaseCommandBotRequest<EventCommandBotRequest> request)
+		{
+			throw new System.NotImplementedException();
+		}
+
+		public Task<BaseCommandBotResponse<IMessageCommandResponse>> ExecAsync(BaseCommandBotRequest<ChatMessageCommandBotRequest> request)
 		{
 			throw new System.NotImplementedException();
 		}

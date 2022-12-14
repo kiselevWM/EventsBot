@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Bots.Common.ExternelModels.Requests.BotCommands;
+using Bots.Common.ExternelModels.Requests.BotCommands.ChatMessageCommand;
 using Bots.Common.ExternelModels.Requests.BotCommands.DiscussCommand;
 using Bots.Common.ExternelModels.Requests.BotCommands.EventCommand;
 using Bots.Common.ExternelModels.Requests.BotCommands.MessageCommand;
@@ -24,6 +25,7 @@ namespace Bots.Common.Tests.RequestProcessorsTests.BaseCommandRequestProcessorTe
 			public bool MesCmdExecuted { get; set; }
 			public bool DiscussCmdExecuted { get; set; }
 			public bool EventCmdExecuted { get; set; }
+			public bool ChatMesCmdExecuted { get; set; }
 
 			public Task<BaseCommandBotResponse<IMessageCommandResponse>> ExecAsync(BaseCommandBotRequest<MessageCommandBotRequest> request)
 			{
@@ -41,6 +43,11 @@ namespace Bots.Common.Tests.RequestProcessorsTests.BaseCommandRequestProcessorTe
 			{
 				EventCmdExecuted = true;
 				return Task.FromResult<BaseCommandBotResponse<IEventCommandResponse>>(null);
+			}
+			public Task<BaseCommandBotResponse<IMessageCommandResponse>> ExecAsync(BaseCommandBotRequest<ChatMessageCommandBotRequest> request)
+			{
+				ChatMesCmdExecuted = true;
+				return Task.FromResult<BaseCommandBotResponse<IMessageCommandResponse>>(null);
 			}
 		}
 
@@ -131,6 +138,7 @@ namespace Bots.Common.Tests.RequestProcessorsTests.BaseCommandRequestProcessorTe
 			Assert.IsTrue(cmd.DiscussCmdExecuted);
 			Assert.IsFalse(cmd.EventCmdExecuted);
 			Assert.IsFalse(cmd.MesCmdExecuted);
+			Assert.IsFalse(cmd.ChatMesCmdExecuted);
 			cmd.DiscussCmdExecuted = false;
 
 			request.ctx = BotCommandContext.EventPostForm;
@@ -138,6 +146,7 @@ namespace Bots.Common.Tests.RequestProcessorsTests.BaseCommandRequestProcessorTe
 			Assert.IsFalse(cmd.DiscussCmdExecuted);
 			Assert.IsTrue(cmd.EventCmdExecuted);
 			Assert.IsFalse(cmd.MesCmdExecuted);
+			Assert.IsFalse(cmd.ChatMesCmdExecuted);
 			cmd.EventCmdExecuted = false;
 
 			request.ctx = BotCommandContext.MessagingPostForm;
@@ -145,6 +154,15 @@ namespace Bots.Common.Tests.RequestProcessorsTests.BaseCommandRequestProcessorTe
 			Assert.IsFalse(cmd.DiscussCmdExecuted);
 			Assert.IsFalse(cmd.EventCmdExecuted);
 			Assert.IsTrue(cmd.MesCmdExecuted);
+			Assert.IsFalse(cmd.ChatMesCmdExecuted);
+
+			cmd.MesCmdExecuted = false;
+			request.ctx = BotCommandContext.ChatPostForm;
+			await processor.ProcessAsync(request);
+			Assert.IsFalse(cmd.DiscussCmdExecuted);
+			Assert.IsFalse(cmd.EventCmdExecuted);
+			Assert.IsFalse(cmd.MesCmdExecuted);
+			Assert.IsTrue(cmd.ChatMesCmdExecuted);
 		}
 	}
 }

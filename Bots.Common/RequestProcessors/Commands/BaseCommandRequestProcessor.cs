@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Bots.Common.ExternelModels.Requests;
 using Bots.Common.ExternelModels.Requests.BotCommands;
+using Bots.Common.ExternelModels.Requests.BotCommands.ChatMessageCommand;
 using Bots.Common.ExternelModels.Requests.BotCommands.DiscussCommand;
 using Bots.Common.ExternelModels.Requests.BotCommands.EventCommand;
 using Bots.Common.ExternelModels.Requests.BotCommands.MessageCommand;
@@ -57,7 +58,7 @@ namespace Bots.Common.RequestProcessors.Commands
 					},
 					{
 						BotCommandContext.ChatPostForm, async (command, request) => CastResponse(
-								await ProcessWrapper<BaseCommandBotRequest<MessageCommandBotRequest>, MessageCommandBotRequest, 
+								await ProcessWrapper<BaseCommandBotRequest<ChatMessageCommandBotRequest>, ChatMessageCommandBotRequest, 
 									BaseCommandBotResponse<IMessageCommandResponse>, IMessageCommandResponse>(request, CreateRequest, command.ExecAsync),
 								request.token)
 					}
