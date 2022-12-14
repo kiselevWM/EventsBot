@@ -5,5 +5,6 @@
 		MessagingPostForm = 1,
 		DiscussPostForm = 2,
 		EventPostForm = 4,
+		ChatPostForm = 8
 	}
 }

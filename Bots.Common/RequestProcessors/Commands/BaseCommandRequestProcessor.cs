@@ -54,6 +54,12 @@ namespace Bots.Common.RequestProcessors.Commands
 								await ProcessWrapper<BaseCommandBotRequest<MessageCommandBotRequest>, MessageCommandBotRequest, 
 									BaseCommandBotResponse<IMessageCommandResponse>, IMessageCommandResponse>(request, CreateRequest, command.ExecAsync),
 								request.token)
+					},
+					{
+						BotCommandContext.ChatPostForm, async (command, request) => CastResponse(
+								await ProcessWrapper<BaseCommandBotRequest<MessageCommandBotRequest>, MessageCommandBotRequest, 
+									BaseCommandBotResponse<IMessageCommandResponse>, IMessageCommandResponse>(request, CreateRequest, command.ExecAsync),
+								request.token)
 					}
 				};
 		}
