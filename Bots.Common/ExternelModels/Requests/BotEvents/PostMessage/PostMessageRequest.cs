@@ -9,5 +9,6 @@ namespace Bots.Common.ExternelModels.Requests.BotEvents.PostMessage
 		public long Id { get; set; }
 		public DateTime dateCreated { get; set; }
 		public string message { get; set; }
+		public long? parentMessageId { get; set; }
 	}
 }
