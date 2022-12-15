@@ -37,6 +37,10 @@
 		/// <summary>
 		/// Личное сообщение
 		/// </summary>
-		Message=9
+		Message=9,
+		/// <summary>
+		/// Сообщение в групповом чате
+		/// </summary>
+		ChatMessage
 	}
 }

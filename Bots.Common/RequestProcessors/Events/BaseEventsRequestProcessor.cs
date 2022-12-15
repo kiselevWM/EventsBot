@@ -5,11 +5,13 @@ using Bots.ApiLayer.Api.Discuss;
 using Bots.ApiLayer.Api.Message;
 using Bots.Common.ExternelModels.Requests;
 using Bots.Common.ExternelModels.Requests.BotEvents;
+using Bots.Common.ExternelModels.Requests.BotEvents.PostChatMessage;
 using Bots.Common.ExternelModels.Requests.BotEvents.PostGroupDiscuss;
 using Bots.Common.ExternelModels.Requests.BotEvents.PostGroupEvent;
 using Bots.Common.ExternelModels.Requests.BotEvents.PostMessage;
 using Bots.Common.ExternelModels.Responses.BotEvents;
 using Bots.Common.ExternelModels.Responses.BotEvents.Message;
+using Bots.Common.ExternelModels.Responses.BotEvents.PostChatMessage;
 using Bots.Common.ExternelModels.Responses.BotEvents.PostGroupDiscuss;
 using Bots.Common.Models.Events;
 using Bots.Common.RequestProcessors.Base;
@@ -89,6 +91,13 @@ namespace Bots.Common.RequestProcessors.Events
 						CastResponse(
 						await ProcessWrapper<BaseEventsBotRequest<PostMessageRequest>, PostMessageRequest, 
 							BaseEventsBotResponse<PostMessageResponse>, PostMessageResponse>(request, CreateRequest, 
+							eventsProcessor.ProcessAsync), request.token)
+				},
+				{
+					BotEvent.ChatMessage, async request => 
+						CastResponse(
+						await ProcessWrapper<BaseEventsBotRequest<PostChatMessageRequest>, PostChatMessageRequest, 
+							BaseEventsBotResponse<PostChatMessageResponse>, PostChatMessageResponse>(request, CreateRequest, 
 							eventsProcessor.ProcessAsync), request.token)
 				}
 			};

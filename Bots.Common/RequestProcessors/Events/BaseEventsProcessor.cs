@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Bots.Common.ExternelModels.Requests.BotEvents;
+using Bots.Common.ExternelModels.Requests.BotEvents.PostChatMessage;
 using Bots.Common.ExternelModels.Requests.BotEvents.PostGroupDiscuss;
 using Bots.Common.ExternelModels.Requests.BotEvents.PostGroupEvent;
 using Bots.Common.ExternelModels.Requests.BotEvents.PostMessage;
 using Bots.Common.ExternelModels.Responses.BotEvents;
 using Bots.Common.ExternelModels.Responses.BotEvents.Message;
+using Bots.Common.ExternelModels.Responses.BotEvents.PostChatMessage;
 using Bots.Common.ExternelModels.Responses.BotEvents.PostGroupDiscuss;
 
 namespace Bots.Common.RequestProcessors.Events
@@ -73,6 +75,11 @@ namespace Bots.Common.RequestProcessors.Events
 		/// message
 		/// </summary>
 		public virtual Task<BaseEventsBotResponse<PostMessageResponse>> ProcessAsync(BaseEventsBotRequest<PostMessageRequest> request)
+		{
+			throw new NotImplementedException();
+		}
+
+		public Task<BaseEventsBotResponse<PostChatMessageResponse>> ProcessAsync(BaseEventsBotRequest<PostChatMessageRequest> request)
 		{
 			throw new NotImplementedException();
 		}
