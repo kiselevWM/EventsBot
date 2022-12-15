@@ -55,7 +55,7 @@ namespace Bots.Common.Tests.RequestProcessorsTests.BaseRequestProcessorTests
 		public async Task BaseRPChoosingProcessorOk()
 		{
 			var commandRequest = JsonConvert.SerializeObject(
-				new BaseCommandBotRequest<MessageCommandBotRequest>("123", "asdasd", new MessageCommandBotRequest("mes"),
+				new BaseCommandBotRequest<MessageCommandBotRequest>("123", "asdasd", new MessageCommandBotRequest("mes", null),
 					"ru", null, BotCommandContext.MessagingPostForm));
 
 			await _proc.ProcessAsync(commandRequest);

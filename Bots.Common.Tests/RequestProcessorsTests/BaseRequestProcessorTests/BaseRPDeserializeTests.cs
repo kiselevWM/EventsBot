@@ -50,7 +50,7 @@ namespace Bots.Common.Tests.RequestProcessorsTests.BaseRequestProcessorTests
 		public async Task BaseRPDesOk()
 		{
 			var serilaizedObject = JsonConvert.SerializeObject(
-				new BaseCommandBotRequest<MessageCommandBotRequest>("123", "asdasd", new MessageCommandBotRequest("mes"),
+				new BaseCommandBotRequest<MessageCommandBotRequest>("123", "asdasd", new MessageCommandBotRequest("mes", null),
 					"ru-RU", Token, BotCommandContext.MessagingPostForm));
 			var trueResultStr = await _proc.ProcessAsync(serilaizedObject);
 			Assert.IsNotNull(trueResultStr);

@@ -6,7 +6,7 @@ namespace Bots.Common.ExternelModels.Requests.BotCommands.ChatMessageCommand
 	public class ChatMessageCommandBotRequest: MessageCommandBotRequest
 	{
 		public ChatMessageCommandBotRequest(){}
-		public ChatMessageCommandBotRequest(string message, string chatUid): base(message)
+		public ChatMessageCommandBotRequest(string message,long? parentMessageId, string chatUid): base(message, parentMessageId)
 		{
 			this.chatUid = chatUid ?? throw new ArgumentNullException(nameof(chatUid));
 		}
