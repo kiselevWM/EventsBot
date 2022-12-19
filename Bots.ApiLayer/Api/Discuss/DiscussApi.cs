@@ -16,6 +16,12 @@ namespace Bots.ApiLayer.Api.Discuss
 			return await SendPostRequest<BotPostDiscussionForm, DiscussPostView>("BotFastPost", form, timeSpan).ConfigureAwait(false);
 		}
 
+		public async Task<DiscussPostView> BotPostAsync(BotPostDiscussionForm form, TimeSpan? timeSpan = null)
+		{
+			if (form == null) return null;
+			return await SendPostRequest<BotPostDiscussionForm, DiscussPostView>("BotPost", form, timeSpan).ConfigureAwait(false);
+		}
+
 		public async Task<DiscussView> BotUpdateAsync(BotUpdateDiscussForm form, TimeSpan? timeSpan = null)
 		{
 			return await SendPostRequest<BotUpdateDiscussForm, DiscussView>("BotUpdate", form, timeSpan).ConfigureAwait(false);
