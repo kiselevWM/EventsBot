@@ -78,8 +78,10 @@ namespace Bots.Common.RequestProcessors.Events
 		{
 			throw new NotImplementedException();
 		}
-
-		public Task<BaseEventsBotResponse<PostChatMessageResponse>> ProcessAsync(BaseEventsBotRequest<PostChatMessageRequest> request)
+		/// <summary>
+		/// chat message 
+		/// </summary>
+		public virtual Task<BaseEventsBotResponse<PostChatMessageResponse>> ProcessAsync(BaseEventsBotRequest<PostChatMessageRequest> request)
 		{
 			throw new NotImplementedException();
 		}
