@@ -3,7 +3,7 @@ using Bots.ApiLayer.Models.Post;
 
 namespace Bots.ApiLayer.Models.Message.Forms
 {
-	public class PostMessageForm : BasePostForm
+	public class PostMessageForm : PostMessageBaseForm
 	{
 		/// <summary>
 		/// Wmid Адресата
