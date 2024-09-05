@@ -9,5 +9,6 @@ namespace Bots.ApiLayer.Models.Message.Forms
 		/// Wmid Адресата
 		/// </summary>
 		public List<string> corsWmid { get; set; }
-	}
+        public string chatUid { get; set; }
+    }
 }
